@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#080d18">
+<meta name="description" content="A convenient dashboard with official Indian Visa and PassTrack status portal links. Status is verified on the official websites only.">
+<title>Indian Visa + PassTrack Checker</title>
+<style>
+:root{color-scheme:dark;--bg:#080d18;--panel:#101a2a;--panel2:#142238;--line:#26364d;--text:#f2f6ff;--muted:#9aacc6;--blue:#55b4ff;--blue2:#247ce0;--green:#6de0b0;--amber:#ffd080}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at 80% 0%,#13294a 0,transparent 36%),var(--bg);color:var(--text);font:15px/1.55 Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;min-height:100vh}
+a{color:inherit}.wrap{width:min(1120px,calc(100% - 32px));margin:auto}.topbar{display:flex;justify-content:space-between;align-items:center;padding:22px 0;border-bottom:1px solid #24334a;gap:16px}.brand{display:flex;align-items:center;gap:12px;text-decoration:none}.logo{width:44px;height:44px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(145deg,#1c4774,#142238);border:1px solid #37628d;color:#83ccff;font-size:23px}.brand strong{display:block;letter-spacing:.02em;font-size:14px}.brand small{color:var(--muted);font-size:11px;letter-spacing:.14em}.pill{border:1px solid #285846;color:#9cf0c8;background:#103026;padding:6px 10px;border-radius:99px;font-size:11px;font-weight:700;letter-spacing:.08em}
+.hero{padding:54px 0 30px;display:grid;grid-template-columns:1.3fr .7fr;gap:32px;align-items:center}.eyebrow{color:var(--blue);font-size:12px;font-weight:800;letter-spacing:.17em;text-transform:uppercase}.hero h1{font-size:clamp(30px,5vw,52px);line-height:1.08;letter-spacing:-.045em;margin:12px 0 16px;max-width:700px}.hero h1 span{color:var(--blue)}.hero p{color:var(--muted);max-width:650px;margin:0;font-size:16px}.hero-art{border:1px solid #294361;background:linear-gradient(145deg,#12243b,#0b1423);border-radius:24px;padding:24px;min-height:185px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 24px 70px #0003}.art-icon{display:flex;gap:12px;align-items:center;color:#8fd2ff}.art-icon .symbol{width:52px;height:52px;border-radius:16px;background:#183653;display:grid;place-items:center;font-size:27px}.hero-art strong{font-size:17px}.hero-art p{font-size:13px;margin-top:5px}.layout{display:grid;grid-template-columns:1.1fr .9fr;gap:20px;padding-bottom:34px}.card{background:linear-gradient(180deg,#111d30,#0e1726);border:1px solid var(--line);border-radius:20px;padding:24px;box-shadow:0 14px 40px #0002}.card-head{display:flex;align-items:flex-start;gap:12px;margin-bottom:22px}.card-head .icon{width:42px;height:42px;display:grid;place-items:center;background:#18314d;border-radius:13px;color:#81c9ff;font-size:20px;flex-shrink:0}.card h2{font-size:18px;margin:0 0 4px}.sub{color:var(--muted);font-size:13px;margin:0}.field{margin-bottom:16px}.field label{display:block;font-size:13px;font-weight:650;margin-bottom:7px;color:#d9e5f6}.field input{width:100%;border:1px solid #334660;background:#0a1321;color:var(--text);padding:13px 14px;border-radius:11px;font:inherit;outline:none;transition:border .2s,box-shadow .2s}.field input:focus{border-color:var(--blue);box-shadow:0 0 0 3px #55b4ff1c}.field input::placeholder{color:#687d99}.hint{color:#7f94b1;font-size:12px;margin-top:7px}.primary{width:100%;border:0;border-radius:12px;padding:14px 16px;background:linear-gradient(100deg,#2786ee,#42b3ff);color:#041323;font:inherit;font-weight:850;letter-spacing:.025em;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px;box-shadow:0 8px 24px #2386e633;transition:transform .18s,filter .18s}.primary:hover{filter:brightness(1.08);transform:translateY(-1px)}.primary:active{transform:translateY(0)}.notice{display:flex;gap:10px;padding:12px 13px;border:1px solid #55472c;background:#292315;border-radius:12px;color:#f2d9a7;font-size:12px;margin-top:15px}.notice b{display:block;color:#ffe6b0;margin-bottom:2px}.portal-list{display:grid;gap:12px}.portal{border:1px solid #2a3b52;background:#0c1625;border-radius:15px;padding:16px;display:flex;gap:13px;align-items:center}.portal .picon{height:44px;width:44px;flex-shrink:0;border-radius:12px;background:#192e47;display:grid;place-items:center;color:#7fc7ff;font-size:20px}.portal .ptext{flex:1;min-width:0}.portal strong{display:block;font-size:14px}.portal small{display:block;color:var(--muted);font-size:12px;margin-top:3px}.status{font-size:10px;font-weight:800;letter-spacing:.08em;border-radius:99px;border:1px solid #3c4b60;color:#a6b5c9;padding:5px 7px;white-space:nowrap}.portal-link{display:inline-flex;align-items:center;gap:6px;margin-top:8px;font-size:12px;color:#8dcfff;text-decoration:none}.portal-link:hover{text-decoration:underline}.status-message{display:none;margin-top:14px;border-radius:12px;border:1px solid #2c4e69;background:#11263a;padding:13px;color:#dceeff;font-size:13px}.status-message.show{display:block}.status-message strong{display:block;margin-bottom:4px}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:0 0 34px}.stat{border:1px solid #24354c;background:#0d1726;border-radius:14px;padding:15px}.stat strong{display:block;font-size:15px}.stat span{color:var(--muted);font-size:12px}.section-title{display:flex;justify-content:space-between;gap:10px;align-items:center;margin:0 0 14px}.section-title h2{font-size:19px;margin:0}.section-title span{color:var(--muted);font-size:12px}.footer{border-top:1px solid #24334a;padding:22px 0 28px;color:#8194af;font-size:12px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}.footer a{color:#9ed5ff;text-decoration:none}.footer a:hover{text-decoration:underline}.smallprint{color:#778ca8;font-size:11px;max-width:780px;margin-top:10px}
+@media(max-width:760px){.hero{grid-template-columns:1fr;padding-top:38px}.hero-art{min-height:145px}.layout{grid-template-columns:1fr}.stats{grid-template-columns:1fr}.topbar{align-items:flex-start}.pill{margin-top:5px}.card{padding:19px}.portal{align-items:flex-start}.status{margin-left:auto}.hero h1{font-size:36px}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="topbar">
+  <a class="brand" href="#" aria-label="Indian Visa PassTrack Checker home">
+    <span class="logo" aria-hidden="true">✦</span>
+    <span><strong>INDIAN VISA + PASSTRACK</strong><small>STATUS CHECKER</small></span>
+  </a>
+  <span class="pill">OFFICIAL PORTALS ONLY</span>
+</header>
+
+<section class="hero">
+  <div>
+    <div class="eyebrow">One dashboard · Two official portals</div>
+    <h1>Check your application.<br><span>With clarity.</span></h1>
+    <p>A simple dashboard to help you open the official Indian Visa status enquiry and PassTrack tracking pages. Your actual status is shown only by the official portals.</p>
+  </div>
+  <aside class="hero-art">
+    <div class="art-icon"><span class="symbol" aria-hidden="true">⌁</span><span><strong>Application tracking</strong><p>Quick access, no invented results.</p></span></div>
+    <div><span class="pill">PRIVACY-FIRST DESIGN</span></div>
+  </aside>
+</section>
+
+<section class="stats" aria-label="Website features">
+  <div class="stat"><strong>02 portals</strong><span>Official status links</span></div>
+  <div class="stat"><strong>01 action</strong><span>Single check button</span></div>
+  <div class="stat"><strong>0 fake results</strong><span>No simulated status claims</span></div>
+</section>
+
+<main class="layout">
+  <section class="card">
+    <div class="card-head">
+      <span class="icon" aria-hidden="true">⌕</span>
+      <div><h2>Check application status</h2><p class="sub">Enter details for your own reference, then continue to the official portals.</p></div>
+    </div>
+    <form id="checkerForm">
+      <div class="field">
+        <label for="webfile">Web File / Application Number</label>
+        <input id="webfile" name="webfile" autocomplete="off" placeholder="Enter web file or application number" maxlength="80">
+        <div class="hint">Use the number printed on your application or IVAC receipt.</div>
+      </div>
+      <div class="field">
+        <label for="passport">Passport Number (optional for this helper)</label>
+        <input id="passport" name="passport" autocomplete="off" placeholder="Enter passport number only if needed" maxlength="40">
+        <div class="hint">This helper does not send or save your details. Official websites may ask for required information separately.</div>
+      </div>
+      <button class="primary" type="submit">↗ &nbsp; CHECK STATUS ON OFFICIAL SITES</button>
+    </form>
+    <div id="message" class="status-message" role="status" aria-live="polite"></div>
+    <div class="notice"><span aria-hidden="true">ⓘ</span><div><b>No live status is fetched here</b>This website does not connect to government databases or bypass CAPTCHA. The official sites will show the real result after you complete their required steps.</div></div>
+  </section>
+
+  <section class="card">
+    <div class="card-head">
+      <span class="icon" aria-hidden="true">↗</span>
+      <div><h2>Official status portals</h2><p class="sub">Open the appropriate service below at any time.</p></div>
+    </div>
+    <div class="portal-list">
+      <article class="portal">
+        <span class="picon" aria-hidden="true">◎</span>
+        <div class="ptext"><strong>Indian Visa Online</strong><small>Visa enquiry for regular/paper applications</small><a class="portal-link" href="https://indianvisaonline.gov.in/visa/StatusEnquiry" target="_blank" rel="noopener noreferrer">Open status enquiry ↗</a></div>
+        <span class="status">OFFICIAL</span>
+      </article>
+      <article class="portal">
+        <span class="picon" aria-hidden="true">▤</span>
+        <div class="ptext"><strong>PassTrack / IVAC</strong><small>Regular visa application tracking</small><a class="portal-link" href="https://www.passtrack.net/regular_passport.php" target="_blank" rel="noopener noreferrer">Open tracking page ↗</a></div>
+        <span class="status">OFFICIAL</span>
+      </article>
+    </div>
+    <p class="smallprint">For regular Indian visa applications submitted in Bangladesh, PassTrack may ask for a web file number and CAPTCHA. Follow the instructions displayed on its website.</p>
+  </section>
+</main>
+
+<section class="card" style="margin-bottom:28px">
+  <div class="section-title"><h2>How it works</h2><span>Simple and transparent</span></div>
+  <div class="stats" style="margin:0">
+    <div class="stat"><strong>01 · Enter</strong><span>Fill in your application details if useful.</span></div>
+    <div class="stat"><strong>02 · Continue</strong><span>The button opens both official portals in separate tabs.</span></div>
+    <div class="stat"><strong>03 · Verify</strong><span>Complete each portal's own form and CAPTCHA.</span></div>
+  </div>
+</section>
+
+<footer class="footer">
+  <span>© <span id="year"></span> Indian Visa + PassTrack Checker · Independent helper</span>
+  <span><a href="https://indianvisa-bangladesh.nic.in/visa/index.html" target="_blank" rel="noopener noreferrer">Indian Visa Bangladesh</a> · <a href="https://www.passtrack.net/" target="_blank" rel="noopener noreferrer">PassTrack Home</a></span>
+</footer>
+</div>
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+const form = document.getElementById('checkerForm');
+const message = document.getElementById('message');
+form.addEventListener('submit', function(event) {
+  event.preventDefault();
+  const webfile = document.getElementById('webfile').value.trim();
+  const passport = document.getElementById('passport').value.trim();
+  if (!webfile && !passport) {
+    message.className = 'status-message show';
+    message.innerHTML = '<strong>Please enter an application number or passport number.</strong>For privacy, these details stay in this page and are not sent to this helper website.';
+    document.getElementById('webfile').focus();
+    return;
+  }
+  message.className = 'status-message show';
+  message.innerHTML = '<strong>Opening official status portals…</strong>No status has been retrieved or guessed. Complete the required fields and CAPTCHA on each official site to view the result.';
+  // Do not transmit user-entered identifiers; the official portals require their own user interaction.
+  window.open('https://indianvisaonline.gov.in/visa/StatusEnquiry', '_blank', 'noopener,noreferrer');
+  window.open('https://www.passtrack.net/regular_passport.php', '_blank', 'noopener,noreferrer');
+});
+</script>
+</body>
+</html>
